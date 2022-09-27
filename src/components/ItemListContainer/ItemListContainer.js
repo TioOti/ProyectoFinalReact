@@ -1,7 +1,7 @@
-const ItemListContainer = () => {
+const ItemListContainer = (props) => {
   return (
     <main>
-      <h1 className="text-center text-light bg-dark">Bienvenido !</h1>
+      <h1 className="text-center text-light bg-dark">{props.saludo}</h1>
     </main>
   );
 };
