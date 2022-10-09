@@ -1,15 +1,17 @@
 import { CartWidget } from "../CartWidget/CartWidget";
 import ITechLogo from "./Assets/pngegg.png";
-import CartLogo from "./Assets/shopping-cart.png";
 import "./NavBar.css";
+import { NavLink } from "react-router-dom";
 
 export function NavBar() {
   return (
     <nav id="navbar" className="navbar navbar-expand-lg">
       <div className="container-fluid">
-        <picture>
-          <img src={ITechLogo} className="img-fluid" alt="iTechStore"></img>
-        </picture>
+        <NavLink to = "/">
+           <picture>
+           <img src={ITechLogo} className="img-fluid" alt="iTechStore"></img>
+          </picture>
+        </NavLink>       
         <button
           className="navbar-toggler"
           type="button"
@@ -19,33 +21,33 @@ export function NavBar() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon text-light"></span>
+          <div className="navbar-toggler-icon text-light"></div>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav text-center">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <NavLink to = "/" className="nav-link active" aria-current="page">
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink to = "/categoria/Celulares" className="nav-link">
                 IPhone
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <NavLink to = "/categoria/MacBook" className="nav-link">
                 MacBook
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" href="#">
+              <NavLink to = "/" className="nav-link active">
                 Servicio Técnico
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
-        <CartWidget/> 
+        <CartWidget />
       </div>
     </nav>
   );
