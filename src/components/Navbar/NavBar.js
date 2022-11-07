@@ -2,8 +2,16 @@ import { CartWidget } from "../CartWidget/CartWidget";
 import ITechLogo from "./Assets/pngegg.png";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import { getDocs, collection, query, orderBy } from 'firebase/firestore'
+import { getCategories } from "../../services/Firebase/Firestore/products";
+
 
 export function NavBar() {
+
+  const { totalQuantity } = useContext(CartContext)
+
   return (
     <nav id="navbar" className="navbar navbar-expand-lg">
       <div className="container-fluid">
@@ -39,15 +47,13 @@ export function NavBar() {
               <NavLink to = "/categoria/MacBook" className="nav-link">
                 MacBook
               </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to = "/" className="nav-link active">
-                Servicio Técnico
-              </NavLink>
-            </li>
+            </li>            
           </ul>
         </div>
-        <CartWidget />
+        {
+          totalQuantity > 0 && <CartWidget/>
+        }
+        
       </div>
     </nav>
   );

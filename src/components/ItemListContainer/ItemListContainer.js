@@ -1,37 +1,31 @@
-import { useEffect, useState } from "react";
-import { getProducts, getProductsByCategory } from "../asyncMock";
 import Loading from "../Loading/Loading";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
+import { getProducts } from "../../services/Firebase/Firestore/products";
+import { useAsync } from '../../hooks/useAsync'
 
 
 const ItemListContainer = () => {
-  const [productos, setProductos] = useState([]);
-  const [loading, setLoading] = useState(true);
+
   const {categoryId} = useParams();
 
+  const getProductsWithCategory = () => getProducts(categoryId)
 
-  useEffect(() => {
-    setLoading(true)
-    const asyncFunction = categoryId? getProductsByCategory:getProducts
-    
-    asyncFunction(categoryId)
-      .then((response) => {        
-        setProductos(response);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [categoryId]);
+  const { data: products, error, loading } = useAsync(getProductsWithCategory, [categoryId])
 
   if (loading) {
     return <Loading />;
   } 
+
+  if (error) {
+    return <h1 className="d-flex justify-content-center m-4 text-danger">Ups ! Parece que algo salió mal ...</h1>;
+  }
+
   return (
     <>
       <h1 className="d-flex justify-content-center">Productos</h1>
       <section className="d-flex flex-wrap justify-content-center container-xl mt-4">
-        <ItemList productos={productos} />
+        <ItemList productos={products} />
       </section>
     </>
   );

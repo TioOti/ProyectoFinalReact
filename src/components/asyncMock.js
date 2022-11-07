@@ -1,62 +1,62 @@
 const products = [
   {
     id: "1",
-    nombre: "iphone 12",
-    precio: "379.000",
+    name: "iphone 12",
+    price: 379,
     img:'/images/iphon12.png',
-    stock: "5",
-    descripcion:"Apple iPhone 12 (256 GB) - Negro",
-    categoria: "Celulares"
+    stock: 5,
+    description:"Apple iPhone 12 (256 GB) - Negro",
+    category: "Celulares"
 
   },
   {
     id: "2",
-    nombre: "iphone 11",
-    precio: "259.900",
+    name: "iphone 11",
+    price: 259,
     img:'/images/iphone11.png',
-    stock: "6",
-    descripcion:"iPhone 11 (128 GB) - Rojo",
-    categoria: "Celulares"
+    stock: 6,
+    description:"iPhone 11 (128 GB) - Rojo",
+    category: "Celulares"
 
   },
   {
     id: "3",
-    nombre: "iphone 10",
-    precio: "135.000",
+    name: "iphone 10",
+    price: 185,
     img:'/images/iphone-10.png',
     stock: "2",
-    descripcion:"iPhone X (64 GB) - Plata",
-    categoria: "Celulares"
+    description:"iPhone X (64 GB) - Plata",
+    category: "Celulares"
 
   },
   {
     id: "4",
-    nombre: 'iphone 8"',
-    precio: "630.000",
+    name: 'iphone 8"',
+    price: 111,
     img:'/images/iphone-8.png',
     stock: "4",
-    descripcion:"iPhone 8 64 GB gris espacial",
-    categoria: "Celulares"
+    description:"iPhone 8 64 GB gris espacial",
+    category: "Celulares"
 
   },
   {
     id: "5",
-    nombre: 'MacBook Air 14"',
-    precio: "630.000",
+    name: 'MacBook Air 14"',
+    price: 630,
     img:'/images/mackbook-air-2022.webp',
     stock: "2",
-    descripcion:"iPhone X (64 GB) - Plata",
-    categoria: "MacBook"
+    description:"iPhone X (64 GB) - Plata",
+    category: "MacBook"
 
   },
   {
     id: "6",
-    nombre: 'MacBook Air 13"',
-    precio: "630.000",
+    name: 'MacBook Air 13"',
+    price: 520,
     img:'/images/mackbook-air-13-2022.webp',
     stock: "2",
-    descripcion:"  Apple MacBook Pro (13 pulgadas, 2020, Chip M1, 512 GB de SSD, 8 GB de RAM) - Gris espacial",
-    categoria: "MacBook"
+    description:"Apple MacBook Pro (13 pulgadas, 2020, Chip M1, 512 GB de SSD, 8 GB de RAM) - Gris espacial",
+    category: "MacBook"
 
   }, 
 ];
@@ -82,7 +82,7 @@ export const getProductsById = (id) => {
 export const getProductsByCategory = (categoryId) => {
   return new Promise (resolve => {
       setTimeout(() => {
-          resolve(products.filter(product => product.categoria === categoryId))
+          resolve(products.filter(product => product.category === categoryId))
       }, 500)
   })
 }
