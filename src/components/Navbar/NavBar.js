@@ -2,15 +2,35 @@ import { CartWidget } from "../CartWidget/CartWidget";
 import ITechLogo from "./Assets/pngegg.png";
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
+import { useCart, } from "../../context/CartContext";
 import { getDocs, collection, query, orderBy } from 'firebase/firestore'
-import { getCategories } from "../../services/Firebase/Firestore/products";
+import { db } from "../../services/Firebase";
+import { useState, useEffect } from "react";
+
 
 
 export function NavBar() {
 
-  const { totalQuantity } = useContext(CartContext)
+  const { totalQuantity } = useCart()
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() =>{
+    const collectionRef = query(collection(db, 'categories'), orderBy('order'))
+
+    getDocs(collectionRef).then(response =>{
+
+      const categoriesAdapted = response.docs.map(doc => {
+        const data = doc.data()
+        const id = doc.id
+        return {id, ...data}
+      })
+      setCategories(categoriesAdapted)
+    }).catch(error => {
+      console.log(error);
+    })
+
+  }, [])
 
   return (
     <nav id="navbar" className="navbar navbar-expand-lg">
@@ -38,16 +58,16 @@ export function NavBar() {
                 Home
               </NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink to = "/categoria/Celulares" className="nav-link">
-                IPhone
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to = "/categoria/MacBook" className="nav-link">
-                MacBook
-              </NavLink>
-            </li>            
+            {
+              categories.map(category =>(
+                <li key={category.id} className="nav-item">
+                  <NavLink  to = {`/categoria/${category.slug}`} className="nav-link active" aria-current="page">
+                    {category.label}
+                  </NavLink>
+                </li>
+              ))
+              
+            }    
           </ul>
         </div>
         {

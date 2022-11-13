@@ -1,11 +1,11 @@
-import { useContext } from "react";
+
 import { Link } from "react-router-dom";
-import { CartContext } from "../../context/CartContext";
+import { useCart } from "../../context/CartContext";
 import CartItem from "../ItemCart/CartItem";
 
 
 const Cart = () => {
-  const {cart, totalQuantity, totalPrice, clearCart} = useContext(CartContext)
+  const {cart, totalQuantity, totalPrice, clearCart} = useCart()
  
     return (
         <>
@@ -19,7 +19,7 @@ const Cart = () => {
                 :
                 <div className="container-xl justify-content-center text-center">
                     { cart.map(p => <CartItem key={p.id} {...p}/>) }
-                    <h3 className="text-center" >Total: ${totalPrice}</h3>
+                    <h3 className="text-center" >Total: U$D {totalPrice}</h3>
                     <div className="btn-group btn-group-sm mt-4 ">
                         <button onClick={() => clearCart()} className="btn btn-outline-primary">Limpiar carrito</button>
                         <Link to='/checkout' className='btn btn-success btn-outline-dark mx-3'>Finalizar Compra</Link>

@@ -34,17 +34,3 @@ export const getProduct = (productId) => {
             })
     })
 }
-
-export const getCategories = (productId) => {
-    return new Promise((resolve, reject) => {
-
-        getDoc(collection(db, 'products'))
-            .then(response => {
-                const productAdapted = createAdaptedProductFromFirestore(response)
-                resolve(productAdapted)
-            })
-            .catch(error => {
-                reject(error)
-            })
-    })
-}

@@ -5,7 +5,7 @@ function Loading() {
   return (
     <div className="ring">
       Loading
-      <span></span>
+      <span id="loading"></span>
     </div>
   );
 }

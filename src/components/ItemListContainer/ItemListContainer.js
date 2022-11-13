@@ -1,5 +1,5 @@
 import Loading from "../Loading/Loading";
-import ItemList from "./ItemList";
+import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
 import { getProducts } from "../../services/Firebase/Firestore/products";
 import { useAsync } from '../../hooks/useAsync'

@@ -1,10 +1,9 @@
 import './CartItem.css'
-import { useContext } from 'react'
-import { CartContext } from '../../context/CartContext'
+import { useCart } from '../../context/CartContext'
 
 
 const CartItem = ({ img, id, name, quantity, price }) => {
-    const { removeItem } = useContext(CartContext)
+    const { removeItem } = useCart()
 
     const handleRemove = (id) => {
         removeItem(id)
@@ -14,7 +13,7 @@ const CartItem = ({ img, id, name, quantity, price }) => {
         <article className='CardCartItem '>
             <header className="HeaderCartItem">
                 <div>
-                    <img width={'60px'} src={img} alt="Cart Item"/>
+                    <img width={'60px'} src={process.env.PUBLIC_URL + img} alt="Cart Item"/>
                 </div>
                 <h2 className="fs-4 ItemHeaderCartItem">
                     {name}
@@ -25,14 +24,13 @@ const CartItem = ({ img, id, name, quantity, price }) => {
                     Cantidad: {quantity}
                 </p>
                 <p className="InfoCartItem">
-                    Precio x Unidad: ${price}
+                    Precio Unitario:U$D {price}
                 </p>
             </section>           
             <footer className='ItemFooterCartItem'>
                  <p className="InfoCartItem">
-                     Subtotal: ${price * quantity}
-                 </p>
-                 {/* <ItemCount onAdd={handleOnAdd} stock={stock}/> */}
+                     Subtotal:U$D {price * quantity}
+                 </p>                 
                  <button className='ButtonCartItem text-black fs-6' onClick={() => handleRemove(id)}>X</button>
             </footer>
         </article>

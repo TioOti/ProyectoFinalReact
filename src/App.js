@@ -18,6 +18,7 @@ function App() {
         <NavBar/>
         <Routes>
           <Route path='/' element={ <ItemListContainer/> }></Route>
+          <Route path='/ProyectoFinalReact' element={ <ItemListContainer/> }></Route>
           <Route path='/categoria/:categoryId' element={ <ItemListContainer/> }></Route>
           <Route path='/item/:productId' element={ <ItemDetailContainer/> }></Route>
           <Route path='*' element={ <h1 className='d-flex justify-content-center m-5'> <h3>Ups, algo ha salido mal</h3> ! </h1> }></Route>
