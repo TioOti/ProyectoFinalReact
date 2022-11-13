@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/ProyectoFinalReact/static/css/main.ea21bff4.css",
+    "main.js": "/ProyectoFinalReact/static/js/main.2a2ef054.js",
+    "static/js/787.83535fb6.chunk.js": "/ProyectoFinalReact/static/js/787.83535fb6.chunk.js",
+    "static/media/pngegg.png": "/ProyectoFinalReact/static/media/pngegg.c4659db1930f65c3b712.png",
+    "static/media/shopping-cart.png": "/ProyectoFinalReact/static/media/shopping-cart.c3d59ba1c6e684214828.png",
+    "index.html": "/ProyectoFinalReact/index.html",
+    "main.ea21bff4.css.map": "/ProyectoFinalReact/static/css/main.ea21bff4.css.map",
+    "main.2a2ef054.js.map": "/ProyectoFinalReact/static/js/main.2a2ef054.js.map",
+    "787.83535fb6.chunk.js.map": "/ProyectoFinalReact/static/js/787.83535fb6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea21bff4.css",
+    "static/js/main.2a2ef054.js"
+  ]
+}
